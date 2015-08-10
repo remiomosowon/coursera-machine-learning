@@ -26,11 +26,15 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
-for iter = 1:size(X,2)
-    mu(iter) = mean(X(:,iter))
-    sigma(iter) = std(X(:,iter))
-    X_norm(:,iter) = (X_norm(:,iter) - mu(iter)) / sigma(iter)
+mu = mean(X);
+sigma = std(X);
+
+for iter = 1:size(X, 2)
+    X_norm(:, iter) = (X_norm(:, iter) - mu(iter)) / sigma(iter);
 end
+
+% This simpler version works too, but only when automatic broadcasting is applied:
+% X_norm = (X_norm - mu) ./ sigma;
 
 % ============================================================
 
